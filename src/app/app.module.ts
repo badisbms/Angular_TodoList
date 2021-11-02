@@ -12,6 +12,7 @@ import { ContactComponent } from './contact/contact.component';
 import { SingleTodoComponent } from './single-todo/single-todo.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AddTodoComponent } from './todo/add-todo/add-todo.component';
+import { HttpClientModule } from "@angular/common/http";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -34,6 +35,7 @@ export const appRouting = RouterModule.forRoot(routes);
     FontAwesomeModule,
     FormsModule,
     RouterModule.forRoot(routes),
+    HttpClientModule,
   ],
   // providers: [TodoServices],
   bootstrap: [AppComponent],
