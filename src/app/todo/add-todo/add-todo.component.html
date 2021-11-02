@@ -1,0 +1,24 @@
+<!-- → fct toggleChild permet de rendre showmepartially true ou flase  -->
+<div class="todoCreateForm" *ngIf="showMePartially">
+  <!-- #addTodoForm = "ngForm" → permet de savoir si form valid  -->
+  <form #addTodoForm = "ngForm" >
+  
+    <div class="form-group">
+      <label for="exampleFormControlInput1">Nom de la tâche</label>
+      <input required type="text" name="todoName" id="exampleFormControlInput1" [(ngModel)]="todoForm.todoName" />
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">Description</label>
+      <textarea
+      required
+      name="description"
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="3"
+        [(ngModel)]="todoForm.description"
+      ></textarea>
+    </div>
+    <!-- voir #addtodorm plus haut, permet de cliker ssi les champ requis sont valides  -->
+    <button (click)="onFormSubmit()" [disabled]="!addTodoForm.form.valid" class="btn btn-primary">Submit</button>
+  </form>
+</div>

@@ -1,0 +1,70 @@
+
+
+<h2 class="todo-title">Liste des taches</h2>
+
+<a (click)="toggleChild()">
+  <fa-icon class="todo-add" [icon]="faPlus"></fa-icon>
+</a>
+  <!-- au clic sur croix affiche le component enfant add todo (voir @inpput) -->
+ <app-add-todo [showMePartially]="showVar"></app-add-todo>
+
+
+<!-- ici ajout de  " | async" pour pouvoir lire la promesse faite sur TodoService -> autre facon de faire sur la recup dans todocomponets -->
+<div class="todos-list">
+
+  <ul *ngFor="let todo of todos; let i = index" class="list-group">
+    <li class="list-group-item">
+      <!-- ici, ngClass agit comme un switch pour afficher un background en fct du statut, si true alors class = encours, else termine  -->
+      <div [ngClass]="{ encours: todo.todoStatus, termine: !todo.todoStatus }">
+        <h4 class="todoNo">Tache {{ i +1}}</h4>
+      
+       
+        
+       <!-- <img class="col" src="{{ todo.todoImg }}" /> -->
+        <div class="description">
+          <a (click)="modify(i)">
+            <fa-icon class="todo-modify" [icon]="fapen"></fa-icon>
+          </a>
+        <p class="col">{{ todo.todoName }}</p>
+      </div>
+        <div class="button-cont">
+          <button
+            (click)="onChangeStatus(i)"
+            type="button"
+            class="btn btn-primary"
+            [disabled]="todo.todoStatus"
+          >
+            <!-- si le statut = true alors disabled le bouton -->
+            En cours
+          </button>
+          <button
+            (click)="onChangeStatus(i)"
+            type="button"
+            class="btn btn-success "
+            [disabled]="!todo.todoStatus"
+          >
+            <!-- si le statut = false alors enabled le bouton -->
+            Terminé
+          </button>
+
+          <!-- getDetail permet de recup cette todo afin de l'afficher -->
+          <button
+            (click)="getDetail(i)"
+            type="button"
+            class="btn btn-secondary"
+          >
+            <!-- si le statut = false alors enabled le bouton -->
+            Détail
+          </button>
+        </div>
+        <input
+          *ngIf="todo.wantModif"
+          type="text"
+          class="form-control"
+          [(ngModel)]="todo.todoName"
+          (keypress)="validateEnter($event, i)"
+        />
+      </div>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,7 @@
+.todo-container {
+    margin: 30px ;
+    width: 50vw;
+    display: flex;
+   flex-direction: column;
+    justify-content: center;
+}
