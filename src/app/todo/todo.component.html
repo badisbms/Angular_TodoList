@@ -9,13 +9,15 @@
  <app-add-todo [showMePartially]="showVar"></app-add-todo>
 
 
-<!-- ici ajout de  " | async" pour pouvoir lire la promesse faite sur TodoService -> autre facon de faire sur la recup dans todocomponets -->
 <div class="todos-list">
 
   <ul *ngFor="let todo of todos; let i = index" class="list-group">
     <li class="list-group-item">
       <!-- ici, ngClass agit comme un switch pour afficher un background en fct du statut, si true alors class = encours, else termine  -->
       <div [ngClass]="{ encours: todo.todoStatus, termine: !todo.todoStatus }">
+        <a (click)="modify(i)">
+          <fa-icon class="todo-delete" [icon]="faTimes"></fa-icon>
+        </a>
         <h4 class="todoNo">Tache {{ i +1}}</h4>
       
        

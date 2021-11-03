@@ -40,6 +40,15 @@
   cursor: pointer;
 }
 
+.todo-delete{
+
+  position: absolute;
+  right: 1%;
+  top: 2%;
+  cursor: pointer;
+
+}
+
 .todo-add {
   font-size: 30px;
   position: absolute;
